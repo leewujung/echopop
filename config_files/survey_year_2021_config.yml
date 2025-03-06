@@ -17,11 +17,11 @@ CAN_haul_offset: 200         # The value to be added to the Canadian's haul numb
 # Report generation
 ###################
 # Where the reports are saved
-report_path: C:/Users/Brandyn/Documents/GitHub/EchoPro_data/echopop_2021/reports
+report_path: /Users/wujung/code_git/echopop/202502_echopop_test/reports
 
 ##############################################################################
 # Directory path that contains all input data needed
-data_root_dir: C:/Users/Brandyn/Documents/GitHub/EchoPro_data/echopop_2021
+data_root_dir: /Users/wujung/code_git/echopop/202502_echopop_test/data_from_RT/2021
 
 ##############################################################################
 # Input data files
@@ -29,24 +29,24 @@ data_root_dir: C:/Users/Brandyn/Documents/GitHub/EchoPro_data/echopop_2021
 biological:
   length:
     US:
-      filename: Biological/US/2021_biodata_length.xlsx
+      filename: Biological/US/biodata_length_2021_US.xlsx
       sheetname: Sheet1
     CAN:
-      filename: Biological/CAN/2021_biodata_length_CAN.xlsx
+      filename: Biological/CAN/biodata_length_2021_CAN.xlsx
       sheetname: Sheet1
   specimen:
     US:
-      filename: Biological/US/2021_biodata_specimen.xlsx
+      filename: Biological/US/biodata_specimen_2021_US.xlsx
       sheetname: Sheet1
     CAN:
-      filename: Biological/CAN/2021_biodata_specimen_CAN_ages.xlsx
+      filename: Biological/CAN/biodata_specimen_2021_CAN.xlsx
       sheetname: Sheet1
   catch:
     US:
-      filename: Biological/US/2021_biodata_catch.xlsx
+      filename: Biological/US/biodata_catch_2021_US.xlsx
       sheetname: Sheet1
     CAN:
-      filename: Biological/CAN/2021_biodata_catch_CAN.xlsx
+      filename: Biological/CAN/biodata_catch_2021_CAN.xlsx
       sheetname: Sheet1
 stratification:
   strata:
