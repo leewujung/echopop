@@ -7,7 +7,7 @@ import pandas as pd
 from shapely.geometry import Point, Polygon
 from shapely.ops import unary_union
 
-from ..spatial.projection import wgs84_to_utm
+from .projection import wgs84_to_utm
 
 
 def correct_transect_intervals(transect_data: pd.DataFrame, interval_threshold: float = 0.05):
