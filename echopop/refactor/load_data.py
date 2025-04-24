@@ -82,6 +82,15 @@ def update_kriging(
 
 # same as the current preprocess_spatial()
 def clean_stratification(df_strata_dict: Dict[pd.DataFrame]) -> Dict[pd.DataFrame]:
+
+    # In addition to the original operations
+    # also do stratum renaming for inpfc originall in transect.py::save_transect_coordinates()
+    # if stratum_def == "inpfc":
+    #     stratum_rename = "stratum_num"
+    # else:
+    #     stratum_rename = stratum_col
+
+
     return df_strata_dict
 
 
