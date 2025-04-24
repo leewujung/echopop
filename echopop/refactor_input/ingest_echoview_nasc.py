@@ -161,10 +161,20 @@ def merge_echoview_nasc(
     return df_merged
 
 
-# TODO: do we need this?
 def read_transect_region_file() -> pd.DataFrame:
-    # add in this the current code in the if statement
-    # if read_transect_region_file:
+    """
+    Read external transect region definition file (if provided).
+
+    Parameters
+    ----------
+    filepath : str or Path
+        Path to the file defining transect-region mapping.
+
+    Returns
+    -------
+    pd.DataFrame
+        DataFrame with region-classified transects.
+    """
     pass
 
 
@@ -187,21 +197,6 @@ def construct_transect_region_key(
     -------
     pd.DataFrame
         Mapping of transects to region classes.
-    """
-    pass
-
-
-# TODO: do we need this?
-def write_transect_region_key(df_transect_region_key: pd.DataFrame, output_path: Union[str, Path]) -> None:
-    """
-    Write transect region key to Excel for documentation.
-
-    Parameters
-    ----------
-    df_transect_region_key : pd.DataFrame
-        Output from construct_transect_region_key.
-    output_path : str or Path
-        Destination file path.
     """
     pass
 
@@ -266,6 +261,10 @@ region_class_mapping = {}  # pattern-label mapping under transect_region_mapping
 df_merged = merge_echoview_nasc(nasc_path, nasc_filename_pattern)
 df_transect_region_key = construct_transect_region_key(df_merged, region_class_mapping)
 
+# Use df.to_csv to save df_transect_region_key, in place of the specialized transect_region_key file
+# Keep read_transect_region_file and make sure its output is the same as construct_transect_region_key
+
+
 # Age-1+
 df_nasc_all_ages = consolidate_echoview_nasc(
     df_merged,
@@ -278,4 +277,4 @@ df_nasc_no_age1 = consolidate_echoview_nasc(
     region_names=["Hake", "Hake Mix"]
 )
 
-# Can use .to_csv to save df_nasc_all_ages and df_nasc_no_age1 if needed
+# Can use df.to_csv to save df_nasc_all_ages and df_nasc_no_age1 if needed
