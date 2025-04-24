@@ -247,10 +247,6 @@ def consolidate_echoview_nasc(
     pass
 
 
-# break up load_data
-# -- there is no need to have a one-size-fits-all load_data function
-# -- you can validate the biological, stratification, and NASC data
-# -- but just read them in is fine: these are all files under our control
 
 
 # Script to organize NASC file
@@ -277,4 +273,9 @@ df_nasc_no_age1 = consolidate_echoview_nasc(
     region_names=["Hake", "Hake Mix"]
 )
 
-# Can use df.to_csv to save df_nasc_all_ages and df_nasc_no_age1 if needed
+# Use df.to_csv to save df_nasc_all_ages and df_nasc_no_age1 if needed
+
+# Use regular pd.read_csv to read df_nasc_*, effectively break up the current load_data()
+# -- there is no need to have a one-size-fits-all load_data function
+# -- you can validate the biological, stratification, and NASC data
+# -- but just read them in is fine: these are all files under our control
