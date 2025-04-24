@@ -116,6 +116,11 @@ root_path = "WHERE_ALL_DATA_IS"
 species_code = "SPECIES_CODE"
 df_acoustic_dict: Dict[pd.DataFrame]  # Load extract nasc data
 
+bio_path_dict: Dict  # the "biological" section of year_config.yml
+strata_path_dict: Dict  # the "stratification" section of year_config.yml
+kriging_path_dict: Dict  # the "kriging" section of year_config.yml
+kriging_param_dict: Dict  # the "kriging_parameters" section of init_config.yml
+
 df_bio_dict: Dict[pd.DataFrame] = load_biological_data(root_path, file_path_dict=bio_path_dict)
 df_bio_dict = clean_biological_data(df_bio_dict)
 
