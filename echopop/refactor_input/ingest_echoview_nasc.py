@@ -4,21 +4,6 @@ from pathlib import Path
 import pandas as pd
 
 
-def get_echoview_NASC() -> bool:
-    """
-    Validate if all 
-    """
-    pass
-
-
-def export_transect_spacing() -> pd.DataFrame:
-    # this should be with NASC-related functions and separately transect.py
-    # currently called within consolidate_exports, make it separate
-
-    # do rename here
-    interval_template = interval_template.rename(columns={"max_depth": "bottom_depth"})
-    pass
-
 def read_echoview_export():
     pass
 
