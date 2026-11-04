@@ -140,8 +140,6 @@ class InversionLengthTS(InversionBase):
 
             - List of DataFrames to be concatenated
 
-            - Dictionary of DataFrames (values will be used)
-
             Required columns:
 
             - All columns specified in model_params["stratify_by"]
@@ -151,6 +149,14 @@ class InversionLengthTS(InversionBase):
             - "length": Fish length measurements
 
             - "length_count" (optional): Pre-aggregated counts per length
+
+        Returns
+        -------
+        pd.DataFrame
+            DataFrame with one column, ``sigma_bs``, containing the count-weighted mean
+            backscattering cross-section within each haul.
+            The index levels are the columns in ``model_params["stratify_by"]`` and
+            ``model_params["haul_column"]``.
 
         Notes
         -----
@@ -175,11 +181,9 @@ class InversionLengthTS(InversionBase):
         # Create copy
         df_length = length_data.copy()
 
-        # Prepare the calculation depending on if `df` is a single DataFrame or Dictionary
+        # Normalize a single DataFrame to a list of DataFrames
         if isinstance(df_length, pd.DataFrame):
             df_length = [df_length]
-        elif isinstance(df_length, dict):
-            df_length = [d for d in df_length.values()]
 
         # Quantize the lengths
         haul_counts = pd.concat(
@@ -205,7 +209,8 @@ class InversionLengthTS(InversionBase):
         # Linearize
         haul_counts["sigma_bs"] = 10.0 ** (haul_counts["TS"] / 10.0)
 
-        # Weighted average across hauls
+        # Average sigma_bs within each haul, weighted by fish counts per length
+        # The stratum identity is preserved as part of the multi-index 
         sigma_bs_haul = haul_counts.groupby(
             self.model_params["stratify_by"] + [self.model_params["haul_column"]]
         )[["sigma_bs", "length_count"]].apply(
